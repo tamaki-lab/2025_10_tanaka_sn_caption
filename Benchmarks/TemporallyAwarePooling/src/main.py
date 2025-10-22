@@ -248,7 +248,7 @@ if __name__ == "__main__":
         )
         captioning.main(args)
         logging.info(f"Total Execution Time is {time.time()-start} seconds")
-    else:
+    else:  # captioning first
         logging.info("Starting main function")
         captioning.main(args)
         logging.info(f"Total Execution Time is {time.time()-start} seconds")

@@ -353,12 +353,12 @@ class SoccerNetCaptions(Dataset):
         self,
         path,
         features="ResNET_TF2_PCA512.npy",
-        split=["train"],
+        split=["train"],#testonly = Trueのときはtest
         version=2,
         framerate=2,
         window_size=15,
     ):
-        self.path = path
+        self.path = path #data/baidu
         split = [s for s in split if s != "challenge"]
         self.listGames = getListGames(split, task="caption")
         self.features = features
@@ -425,6 +425,7 @@ class SoccerNetCaptions(Dataset):
         # launch a TextProcessor that will tokenize a caption
         self.text_processor = SoccerNetTextProcessor(self.getCorpus(split=["train"]))
         self.vocab_size = len(self.text_processor.vocab)
+        print("vocab_size", self.vocab_size)
 
     def __len__(self):
         return len(self.data)
@@ -595,9 +596,7 @@ class PredictionCaptions(Dataset):
             preds = json.load(
                 open(
                     os.path.join(
-                        self.PredictionPath.split("/")[
-                            : len(self.PredictionPath.split("/")) - 1
-                        ],
+                        self.PredictionPath,
                         game,
                         "Labels-v2.json",
                     )

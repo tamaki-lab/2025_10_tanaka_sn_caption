@@ -48,6 +48,8 @@ def main(args):
             framerate=args.framerate,
             window_size=args.window_size_caption,
         )
+    # create test dataset
+    # 特徴量とGTラベルデータをダウンロード
     dataset_Test = SoccerNetCaptions(
         path=args.SoccerNet_path,
         features=args.features,
@@ -231,7 +233,7 @@ def dvc(args):
     for split in args.split_test:
         # GTを使用するように変更
         PredictionPath = os.path.join(
-            f"/mnt/NAS-TVS872XT/dataset/SoccerNet/action_spotting/{split}"
+            f"/mnt/NAS-TVS872XT/dataset/SoccerNet/action_spotting/"
         )
         # PredictionPath = os.path.join("models", args.model_name, f"outputs/{split}")
         dataset_Test = PredictionCaptions(

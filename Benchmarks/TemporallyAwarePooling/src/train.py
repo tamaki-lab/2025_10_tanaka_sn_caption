@@ -524,6 +524,8 @@ def test_captioning(
 
     # store output
     captions = dict(zip(all_index, all_outputs))
+    print("captions", len(captions))
+    print(captions)
     for game_id, game in enumerate(dataloader.dataset.listGames):
         path = os.path.join("models", model_name, output_folder, game, input_filename)
         with open(path, "r") as pred_file:
