@@ -605,8 +605,8 @@ class PredictionCaptions(Dataset):
 
             for caption_id, annotation in enumerate(preds["annotations"]):
 
-                if annotation["label"] not in self.dict_event:
-                    continue
+                # if annotation["label"] not in self.dict_event:
+                #     continue
 
                 time = annotation["gameTime"]
                 half = int(time[0])
