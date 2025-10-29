@@ -17,3 +17,5 @@ requirements.txt
 *.zip
 *.tar.gz
 .DS_Store
+
+GT_actionspotting_dawnloader.py
