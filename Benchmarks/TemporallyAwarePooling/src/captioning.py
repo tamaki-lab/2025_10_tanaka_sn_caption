@@ -143,7 +143,7 @@ def main(args):
 
     # For the best model only
     checkpoint = torch.load(
-        os.path.join("models", args.model_name, "caption", "model.pth.tar")
+        os.path.join("Benchmarks/TemporallyAwarePooling/models", args.model_name, "caption", "model.pth.tar")
     )
     model.load_state_dict(checkpoint["state_dict"])
     model = model.cuda()
@@ -224,7 +224,7 @@ def dvc(args):
 
     # For the best model only
     checkpoint = torch.load(
-        os.path.join("models", args.model_name, "caption", "model.pth.tar")
+        os.path.join("Benchmarks/TemporallyAwarePooling/models", args.model_name, "caption", "model.pth.tar")
     )
     model.load_state_dict(checkpoint["state_dict"])
     model = model.cuda()
