@@ -479,8 +479,8 @@ def test_captioning(
     dataloader,
     model,
     model_name,
-    output_filename="results_dense_captioning.json",
-    input_filename="results_spotting.json",
+    output_filename="results_dense_captioning_usecaptionGT.json",
+    input_filename="Labels-caption.json",
 ):
     batch_time = AverageMeter()
     data_time = AverageMeter()
@@ -524,16 +524,18 @@ def test_captioning(
 
     # store output
     captions = dict(zip(all_index, all_outputs))
-    print("captions", len(captions))
-    print(captions)
+
     for game_id, game in enumerate(dataloader.dataset.listGames):
-        path = os.path.join("models", model_name, output_folder, game, input_filename)
+        path = os.path.join("/mnt/NAS-TVS872XT/dataset/SoccerNet/caption/caption-2023", game, input_filename)
         with open(path, "r") as pred_file:
             preds = json.load(pred_file)
-        for caption_id, annotation in enumerate(preds["predictions"]):
-            annotation["comment"] = captions[game_id, caption_id]
+        for caption_id, annotation in enumerate(preds["annotations"]):
+            try:
+                annotation["comment"] = captions[game_id, caption_id]
+            except KeyError:
+                continue
         with open(
-            os.path.join("models", model_name, output_folder, game, output_filename),
+            os.path.join("Benchmarks/TemporallyAwarePooling/models", model_name, output_folder, game, output_filename),
             "w",
         ) as output_file:
             json.dump(preds, output_file, indent=4)
