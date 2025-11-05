@@ -65,7 +65,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--split_test",
         nargs="+",
-        default=["test", "challenge"],
+        default=["test"],
         help="list of split for testing",
     )
 
@@ -249,16 +249,17 @@ if __name__ == "__main__":
         captioning.main(args)
         logging.info(f"Total Execution Time is {time.time()-start} seconds")
     else:  # captioning first
-        logging.info("Starting main function")
-        captioning.main(args)
-        logging.info(f"Total Execution Time is {time.time()-start} seconds")
+        pass
+        # logging.info("Starting main function")
+        # captioning.main(args)
+        # logging.info(f"Total Execution Time is {time.time()-start} seconds")
 
-        logging.info("Starting main function")
-        args.weights_encoder = (
-            f"models/{args.model_name}/caption/model.pth.tar" if args.pretrain else None
-        )
-        spotting.main(args)
-        logging.info(f"Total Execution Time is {time.time()-start} seconds")
+        # logging.info("pass to spotting")
+        # args.weights_encoder = (
+        #     f"models/{args.model_name}/caption/model.pth.tar" if args.pretrain else None
+        # )
+        # spotting.main(args)
+        # logging.info(f"Total Execution Time is {time.time()-start} seconds")
 
     args.weights_encoder = None
     captioning.dvc(args)
