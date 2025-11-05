@@ -233,7 +233,7 @@ def dvc(args):
     for split in args.split_test:
         # GTを使用するように変更
         PredictionPath = os.path.join(
-            f"/mnt/NAS-TVS872XT/dataset/SoccerNet/action_spotting/"
+            f"/mnt/NAS-TVS872XT/dataset/SoccerNet/caption/caption-2023/"
         )
         # PredictionPath = os.path.join("models", args.model_name, f"outputs/{split}")
         dataset_Test = PredictionCaptions(
