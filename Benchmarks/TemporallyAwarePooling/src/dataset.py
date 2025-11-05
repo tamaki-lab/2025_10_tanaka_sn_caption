@@ -598,7 +598,7 @@ class PredictionCaptions(Dataset):
                     os.path.join(
                         self.PredictionPath,
                         game,
-                        "Labels-v2.json",
+                        "Labels-caption.json",
                     )
                 )
             )
